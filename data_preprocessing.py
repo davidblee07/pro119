@@ -63,17 +63,17 @@ def create_bot_corpus(words, classes, pattern_word_tags_list, ignore_words):
 
     pickle.dump(stem_words, open('words.pkl','wb'))
     pickle.dump(classes, open('classes.pkl','wb'))
-    
+
     for intent in data['intents']:
 
         # Adicione todos os padrões e tags a uma lista
         for pattern in intent['patterns']:  
 
             # tokenize o padrão          
-            pattern_words = nltk.word_tokenize(pattern)
+            pattern_word = nltk.word_tokenize(pattern)
 
             # adicione as palavras tokenizadas à lista words        
-            words.extend(pattern_word)        
+            words.extend(pattern_word)     
 
             # adicione a 'lista de palavras tokenizadas' junto com a 'tag' à lista pattern_word_tags_list
             pattern_word_tags_list.append((pattern_word, intent['tag']))
@@ -120,7 +120,7 @@ def bag_of_words_encoding(stem_words, pattern_word_tags_list):
         3) anexe 1 no BOW; caso contrário, anexe 0
         '''
         for word in stem_words:            
-            if word in stem_pattern_words:              
+            if word in stemmed_pattern_word:              
                 bag_of_words.append(1)
             else:
                 bag_of_words.append(0)
