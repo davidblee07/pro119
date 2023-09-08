@@ -61,9 +61,6 @@ Lista de palavras-tronco ordenadas para nosso conjunto de dados :
 # criando uma função para criar o corpus
 def create_bot_corpus(words, classes, pattern_word_tags_list, ignore_words):
 
-    pickle.dump(stem_words, open('words.pkl','wb'))
-    pickle.dump(classes, open('classes.pkl','wb'))
-
     for intent in data['intents']:
 
         # Adicione todos os padrões e tags a uma lista
